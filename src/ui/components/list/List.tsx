@@ -12,9 +12,10 @@ import { TextService } from '../../../data/services/TextService'
 
 interface ListProps {
     pets: Pet[];
+    onSelect: (pet: Pet) => void;
 }
 
-export default function List({ pets}: ListProps) {
+export default function List({ pets, onSelect}: ListProps) {
     const textMaxLength = 200;
 
   return (
@@ -25,7 +26,7 @@ export default function List({ pets}: ListProps) {
                   <Info>
                       <Name>{pet.name}</Name>
                       <Description>{TextService.limitText(pet.description, textMaxLength)}</Description>
-                      <Button variant={'contained'} fullWidth>Donate</Button>
+                      <Button variant={'contained'} fullWidth onClick={() => onSelect(pet)}>Adopt</Button>
                   </Info>
               </ItemList>
           ))}
