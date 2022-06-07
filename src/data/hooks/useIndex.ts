@@ -1,33 +1,58 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Pet } from '../@types/Pet'
+import { ApiService as Api} from '../services/ApiService'
+import {AxiosError } from 'axios'
+
+const toGet = '/pets'
+const toPost = '/pets/adoption'
 
 export function useIndex() {
-    const [petList, setPetList] = useState(
-        [
-            {
-              id: 1,
-              name: 'Bidu',
-              description: ' loruaasdjifoajsdof jas dofi jsad fioja siofdj asi dfj aiosfdj iaosjd faisjd foias df asif jaiojf',
-              photo: 'https://osasco.sp.gov.br/wp-content/uploads/2022/05/1k1a0509_ccexpress.jpeg',
-    
-            },
-            {
-              id: 2,
-              name: 'Simbad',
-              description: ' loruaasdjifoajsdof jas dofi jsad fioja siofdj asi dfj aiosfdj iaosjd faisjd foias df asif jaiojf',
-              photo: 'https://osasco.sp.gov.br/wp-content/uploads/2022/05/1k1a0509_ccexpress.jpeg',
-    
-            }, 
-            
-          ]
-    )
+    const [petList, setPetList] = useState<Pet[]>([])
 
     const [selectedPet, setSelectedPet] = useState<Pet|null>(null),
         [email, setEmail] = useState(''),
         [amount, setAmount] = useState(''),
-        [message, setMessage] = useState('asdfasdf')
+        [message, setMessage] = useState('');
 
-  
+    useEffect(() => {
+        Api.get(toGet)
+            .then((response) =>{
+                setPetList(response.data);
+            })
+    }, [])
+
+    useEffect(() => {
+        if (selectedPet === null) cleanForm();
+    }, [selectedPet])
+    
+    function adopt(){
+         if(selectedPet === null) return
+         if (validateDataAdoption()) { 
+             Api.post(toPost, { 
+                 pet_id: selectedPet.id, 
+                 email,
+                 value: amount, 
+             }).then(() => { 
+                 setSelectedPet(null)
+                 setMessage(`You successfully adopted ${selectedPet.name}`)
+             }).catch((error: AxiosError) => {
+                 if(error instanceof AxiosError) setMessage(error.response?.data.message)
+             })
+         }else {
+             setMessage('Complete all the fields correctly')
+         }
+    }
+
+    function validateDataAdoption() {
+        return email.length > 0 && amount.length > 0
+    }
+
+    function cleanForm() {
+        setEmail('')
+        setAmount('')
+    }
+
+    
     return ({
         petList,
         selectedPet,
@@ -37,7 +62,8 @@ export function useIndex() {
         amount,
         setAmount,
         message,
-        setMessage
+        setMessage,
+        adopt
     }
   )
 }
