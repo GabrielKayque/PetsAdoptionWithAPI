@@ -5,7 +5,6 @@ export const ListStyled = styled('ul')`
     max-width: 80vw;
     margin: 0 auto;
     padding: ${({theme}) => theme.spacing(2)};
-    border: 1px solid red;
 `;
 
 export const ItemList = styled('li')`

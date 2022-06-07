@@ -10,5 +10,4 @@ export const HeaderContainer = styled('header')`
 
 export const Logo = styled('img')`
     width: 500px;
-    border: 2px solid red;
 `;
