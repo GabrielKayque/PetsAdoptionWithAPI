@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import List from '../ui/components/list/List';
 import Title from '../ui/components/title/Title';
 import { Dialog, TextField, Grid, DialogActions, Button, Snackbar } from '@mui/material'
-import { useIndex } from '../data/hooks/useindex';
+import { useIndex } from '../data/hooks/useIndex';
 
 
 const Home: NextPage = () => {
@@ -16,13 +16,14 @@ const Home: NextPage = () => {
     setAmount,
     message,
     setMessage,
+    adopt
   } = useIndex()
 
 
   return (
     <div>
       <Title 
-        title='JOGOS'
+        title=''
         subtitle={
           <span>with a small monthly donation, <br />
             you <strong>can adopt a pet virtually</strong>
@@ -63,7 +64,7 @@ const Home: NextPage = () => {
         </Grid>
         <DialogActions sx={{ mt: 5 }}>
           <Button color={'secondary'} onClick={() => setSelectedPet(null)}>Cancel</Button>
-          <Button variant={'contained'}>Confirm</Button>
+          <Button variant={'contained'} onClick={() => adopt()}>Confirm</Button>
         </DialogActions>
       </Dialog>
       <Snackbar open={message.length > 0} 
