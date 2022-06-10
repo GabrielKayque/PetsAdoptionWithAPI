@@ -16,7 +16,7 @@ export function useIndex() {
 
     useEffect(() => {
         Api.get(toGet)
-            .then((response) =>{
+            .then((response) => {
                 setPetList(response.data);
             })
     }, [])
@@ -36,7 +36,10 @@ export function useIndex() {
                  setSelectedPet(null)
                  setMessage(`You successfully adopted ${selectedPet.name}`)
              }).catch((error: AxiosError) => {
-                 if(error instanceof AxiosError) setMessage(error.response?.data.message)
+                 console.log(error)
+                 if(error instanceof AxiosError) {
+                     setMessage(error.message)
+                 }
              })
          }else {
              setMessage('Complete all the fields correctly')
