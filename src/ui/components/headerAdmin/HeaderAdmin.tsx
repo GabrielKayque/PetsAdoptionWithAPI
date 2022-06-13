@@ -11,7 +11,7 @@ export default function HeaderAdmin() {
                 </Link>
                 <LinksContainer>
                     <Link component={NextLink} href={'/pets/register'}>Register a Pet</Link>
-                    <Link component={NextLink} href={'/pets/donations'}>See All Donations</Link>
+                    <Link component={NextLink} href={'/pets/records'}>See All Donations</Link>
                 </LinksContainer>
             </div>
         </HeaderContainer>
