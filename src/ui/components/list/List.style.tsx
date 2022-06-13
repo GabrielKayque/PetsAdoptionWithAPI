@@ -1,10 +1,14 @@
 import { styled } from '@mui/material'
 
 export const ListStyled = styled('ul')`
+    list-style-type: none;
     width: 100%;
-    max-width: 80vw;
+    max-width: 90vw;
     margin: 0 auto;
-    padding: ${({theme}) => theme.spacing(2)};
+    padding: ${({ theme }) => theme.spacing(2)};
+    ${({ theme }) => theme.breakpoints.up('md')} {
+        max-width:80vw
+    }
 `;
 
 export const ItemList = styled('li')`
