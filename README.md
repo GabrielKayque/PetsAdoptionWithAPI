@@ -3,7 +3,7 @@
 You can access here: 
  - https://pets-adoption-with-djangoapi.vercel.app (Main Page)
  - https://pets-adoption-with-djangoapi.vercel.app/pets/register (Admin Page, but you can actually add a pet)
- - Django Rest API is deployed here: http://gabrielkayque.pythonanywhere.com
+ - Django Rest API is deployed here: gabrielkayque.pythonanywhere.com/api/pets
 
 Web Application built in ReactJS with an API to manage the pets list and pets adoption built in Django(Django Rest framework) and SQL Models in Django
 
