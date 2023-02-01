@@ -1,8 +1,8 @@
 # A web project to adopt pets
 
 You can access here: 
-https://pets-adoption-with-djangoapi.vercel.app (Main Page)
-https://pets-adoption-with-djangoapi.vercel.app/pets/register (Admin Page, but you can actually add a pet)
+ - https://pets-adoption-with-djangoapi.vercel.app (Main Page)
+ - https://pets-adoption-with-djangoapi.vercel.app/pets/register (Admin Page, but you can actually add a pet)
 
 Web Application built in ReactJS with an API to manage the pets list and pets adoption built in Django(Django Rest framework) and SQL Models in Django
 
